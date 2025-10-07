@@ -4,9 +4,9 @@ from fastapi.security import HTTPBearer
 import uvicorn
 from contextlib import asynccontextmanager
 
-from backend.database.database import engine, Base
-from backend.api.routes import auth, monitoring, submissions, admin, ai_monitoring, code_execution
-from backend.core.config import settings
+from .database.database import engine, Base
+from .api.routes import auth, monitoring, submissions, admin, ai_monitoring, code_execution
+from .core.config import settings
 
 
 @asynccontextmanager
