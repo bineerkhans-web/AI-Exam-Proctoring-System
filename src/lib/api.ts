@@ -49,16 +49,14 @@ export class ApiClient {
     };
 
     if (this.token) {
-      headers = {
-        ...headers,
-        Authorization: `Bearer ${this.token}`,
-      };
+      (headers as Record<string, string>).Authorization = `Bearer ${this.token}`;
     }
 
     const response = await fetch(url, {
       ...options,
       headers,
     });
+
 
     if (!response.ok) {
       throw new Error(`API Error: ${response.status} ${response.statusText}`);
