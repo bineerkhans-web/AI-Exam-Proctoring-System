@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import CameraFeed from "../../components/CameraFeed";
 import { apiClient } from "../../lib/api";
@@ -60,7 +60,7 @@ const defaultCode = {
   }
 };
 
-export default function Exam() {
+function ExamContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const name = searchParams.get("name");
@@ -894,6 +894,19 @@ export default function Exam() {
 
       {/* Proctoring Status Bar removed per request */}
     </div>
+  );
+}
+
+export default function Exam() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
+        <p className="text-gray-600">Loading exam...</p>
+      </div>
+    </div>}>
+      <ExamContent />
+    </Suspense>
   );
 }
 
