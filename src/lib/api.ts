@@ -49,7 +49,10 @@ export class ApiClient {
     };
 
     if (this.token) {
-      headers.Authorization = `Bearer ${this.token}`;
+      headers = {
+        ...headers,
+        Authorization: `Bearer ${this.token}`,
+      };
     }
 
     const response = await fetch(url, {
