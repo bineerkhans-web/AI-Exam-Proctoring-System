@@ -5,12 +5,22 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
-    "start": "next start"
+    "start": "next start",
+    "backend": "cd backend && python main.py",
+    "dev:full": "concurrently \"npm run backend\" \"npm run dev\"",
+    "build:full": "npm run build && cd backend && pip install -r requirements.txt",
+    "start:full": "concurrently \"cd backend && python main.py\" \"npm start\"",
+    "setup": "cd backend && pip install -r requirements.txt && npm install",
+    "docker:dev": "cd backend && docker-compose up -d",
+    "docker:stop": "cd backend && docker-compose down"
   },
   "dependencies": {
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.4"
+    "next": "15.5.4",
+    "axios": "^1.6.0",
+    "concurrently": "^8.2.2",
+    "pyodide": "^0.24.1"
   },
   "devDependencies": {
     "typescript": "^5",
