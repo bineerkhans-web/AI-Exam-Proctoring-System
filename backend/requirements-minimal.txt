@@ -1,0 +1,27 @@
+# Web backend - Core
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+python-multipart==0.0.6
+
+# Database
+SQLAlchemy==2.0.36
+psycopg2-binary==2.9.9
+alembic==1.12.1
+
+# Authentication and security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-dotenv==1.0.0
+
+# Basic image processing (deployment-safe)
+opencv-python-headless==4.8.1.78
+numpy==1.26.4
+Pillow==10.4.0
+
+# Utilities
+pydantic==2.9.2
+httpx==0.25.2
+
+# Development tools (optional)
+pytest==7.4.3
+black==23.11.0
